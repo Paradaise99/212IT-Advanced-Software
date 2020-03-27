@@ -22,3 +22,4 @@ C:\Users\Administrator\source\repos\ContactManager8299745CSharp\ContactManager82
 C:\Users\Administrator\source\repos\ContactManager8299745CSharp\ContactManager8299745CSharp\obj\Debug\ContactManager8299745CSharp.csproj.CopyComplete
 C:\Users\Administrator\source\repos\ContactManager8299745CSharp\ContactManager8299745CSharp\obj\Debug\ContactManager8299745CSharp.exe
 C:\Users\Administrator\source\repos\ContactManager8299745CSharp\ContactManager8299745CSharp\obj\Debug\ContactManager8299745CSharp.pdb
+C:\Users\Administrator\source\repos\ContactManager8299745CSharp\ContactManager8299745CSharp\obj\Debug\ContactManager8299745CSharp.BusinessEditor.resources

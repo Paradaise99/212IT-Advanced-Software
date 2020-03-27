@@ -22,5 +22,11 @@ namespace ContactManager8299745CSharp
             PersonalEditor personal = new PersonalEditor();
             personal.Show();
         }
+
+        private void btn_Business_Click(object sender, EventArgs e)
+        {
+            BusinessEditor business = new BusinessEditor();
+            business.Show();
+        }
     }
 }

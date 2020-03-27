@@ -326,7 +326,7 @@
             this.Controls.Add(this.btn_Refresh);
             this.Controls.Add(this.dgv_PersonalRecords);
             this.Name = "PersonalEditor";
-            this.Text = "PersonalEditor";
+            this.Text = "Personal Editor";
             this.Load += new System.EventHandler(this.PersonalEditor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_PersonalRecords)).EndInit();
             this.ResumeLayout(false);
