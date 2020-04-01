@@ -57,6 +57,15 @@ public class ContacManager {
 		frame.getContentPane().add(bt_PersonalContact);
 		
 		JButton bt_BusinessContact = new JButton("Business Contact");
+		bt_BusinessContact.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				BusinessContact bc=new BusinessContact();
+				frame.dispose();
+				bc.setVisible(true);
+			}
+			
+		});
 		bt_BusinessContact.setForeground(Color.WHITE);
 		bt_BusinessContact.setBackground(Color.BLACK);
 		bt_BusinessContact.setBounds(254, 103, 91, 41);

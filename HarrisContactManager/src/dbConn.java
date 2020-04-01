@@ -33,4 +33,18 @@ public class dbConn {
 		return rs;
 		
 	}
+	
+	public ResultSet GetAllBusiness() {
+		ResultSet rs=null;
+		String sql="{CALL selectAllBusiness()}";
+		try {
+		java.sql.CallableStatement cst= con.prepareCall(sql);
+		rs=cst.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+		
+	}
+	
 }
