@@ -36,6 +36,7 @@ public class PersonalContact extends JFrame {
 	private JButton bt_Updatade;
 	private JButton bt_Delete;
 	private JButton bt_Save;
+	boolean updatemode= true;
 
 	/**
 	 * Launch the application.
@@ -69,7 +70,11 @@ public class PersonalContact extends JFrame {
 		bt_Refresh.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				bt_Updatade.setEnabled(false);
+				bt_Save.setEnabled(false);
+				bt_Delete.setEnabled(false);
+				bt_SaveNew.setEnabled(true);
+				bt_AddNew.setEnabled(true);
 				table.setModel(DbUtils.resultSetToTableModel(d.GetAllPersonal()));
 			}
 		});
@@ -167,6 +172,11 @@ public class PersonalContact extends JFrame {
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
+				bt_Updatade.setEnabled(true);
+				bt_Save.setEnabled(true);
+				bt_Delete.setEnabled(true);
+				bt_SaveNew.setEnabled(false);
+				bt_AddNew.setEnabled(false);
 				tf_FirstName.setText(table.getValueAt(table.getSelectedRow(),1).toString());
 				tf_LastName.setText(table.getValueAt(table.getSelectedRow(),2).toString());
 				tf_Email.setText(table.getValueAt(table.getSelectedRow(),3).toString());
@@ -176,16 +186,60 @@ public class PersonalContact extends JFrame {
 				tf_City.setText(table.getValueAt(table.getSelectedRow(),7).toString());
 				tf_Postcode.setText(table.getValueAt(table.getSelectedRow(),8).toString());
 				tf_HomeTel.setText(table.getValueAt(table.getSelectedRow(),9).toString());
+				
 			}
 		});
 		scrollPane.setViewportView(table);
 		
 		bt_SaveNew = new JButton("Save New");
+		bt_SaveNew.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(updatemode == true) {
+					String f=tf_FirstName.getText();
+					String l=tf_LastName.getText();
+					String em=tf_Email.getText();
+					String t=tf_Tel.getText();
+					String a1=tf_Addr1.getText();
+					String a2=tf_Addr2.getText();
+					String c=tf_City.getText();
+					String p=tf_Postcode.getText();
+					String ht=tf_HomeTel.getText();
+					d.InsertPersonal(f, l, em, t, a1, a2, c, p, ht);
+					table.setModel(DbUtils.resultSetToTableModel(d.GetAllPersonal()));
+				}
+					else {
+						String f=tf_FirstName.getText();
+						String l=tf_LastName.getText();
+						String em=tf_Email.getText();
+						String t=tf_Tel.getText();
+						String a1=tf_Addr1.getText();
+						String a2=tf_Addr2.getText();
+						String c=tf_City.getText();
+						String p=tf_Postcode.getText();
+						String ht=tf_HomeTel.getText();
+						d.InsertPersonal(f, l, em, t, a1, a2, c, p, ht);
+						table.setModel(DbUtils.resultSetToTableModel(d.GetAllPersonal()));
+					}
+			}
+		});
 		bt_SaveNew.setEnabled(false);
 		bt_SaveNew.setBounds(924, 83, 90, 36);
 		contentPane.add(bt_SaveNew);
 		
 		bt_AddNew = new JButton("Add New");
+		bt_AddNew.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				updatemode = false;
+				bt_Updatade.setEnabled(false);
+				bt_Save.setEnabled(false);
+				bt_Delete.setEnabled(false);
+				bt_SaveNew.setEnabled(true);
+				bt_AddNew.setEnabled(true);
+				
+			}
+		});
 		bt_AddNew.setBounds(922, 35, 92, 31);
 		contentPane.add(bt_AddNew);
 		
@@ -193,6 +247,7 @@ public class PersonalContact extends JFrame {
 		bt_Updatade.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				updatemode = true;
 				bt_SaveNew.setEnabled(false);
 				bt_AddNew.setEnabled(false);
 				bt_Delete.setEnabled(false);
@@ -203,10 +258,51 @@ public class PersonalContact extends JFrame {
 		contentPane.add(bt_Updatade);
 		
 		bt_Delete = new JButton("Delete Selected");
+		bt_Delete.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String id=table.getValueAt(table.getSelectedRow(), 0).toString();
+				d.DeletePersonal(id);
+				table.setModel(DbUtils.resultSetToTableModel(d.GetAllPersonal()));
+			}
+		});
 		bt_Delete.setBounds(801, 94, 92, 31);
 		contentPane.add(bt_Delete);
 		
 		bt_Save = new JButton("Save Selected");
+		bt_Save.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(updatemode = true) {
+				String id=table.getValueAt(table.getSelectedRow(), 0).toString();
+				String f=tf_FirstName.getText();
+				String l=tf_LastName.getText();
+				String em=tf_Email.getText();
+				String t=tf_Tel.getText();
+				String a1=tf_Addr1.getText();
+				String a2=tf_Addr2.getText();
+				String c=tf_City.getText();
+				String p=tf_Postcode.getText();
+				String ht=tf_HomeTel.getText();
+				d.UpdatePerosnal(id, f, l, em, t, a1, a2, c, p, ht);
+				table.setModel(DbUtils.resultSetToTableModel(d.GetAllPersonal()));
+			}
+				else {
+					String id=table.getValueAt(table.getSelectedRow(), 0).toString();
+					String f=tf_FirstName.getText();
+					String l=tf_LastName.getText();
+					String em=tf_Email.getText();
+					String t=tf_Tel.getText();
+					String a1=tf_Addr1.getText();
+					String a2=tf_Addr2.getText();
+					String c=tf_City.getText();
+					String p=tf_Postcode.getText();
+					String ht=tf_HomeTel.getText();
+					
+					table.setModel(DbUtils.resultSetToTableModel(d.GetAllPersonal()));
+				}
+		}});
+		
 		bt_Save.setEnabled(false);
 		bt_Save.setBounds(801, 70, 92, 23);
 		contentPane.add(bt_Save);
