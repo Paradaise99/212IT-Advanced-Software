@@ -28,11 +28,11 @@ public class BusinessContact extends JFrame {
 	private JTextField tf_Postcode;
 	private JTextField tf_BusinessTel;
 	private JScrollPane scrollPane;
-	private JButton bt_SaveNew;
-	private JButton bt_AddNew;
-	private JButton bt_Updatade;
-	private JButton bt_Delete;
-	private JButton bt_Save;
+	private JButton btn_SaveNew;
+	private JButton btn_AddNew;
+	private JButton btn_Updatade;
+	private JButton btn_Delete;
+	private JButton btn_Save;
 	boolean updatemode= true;
 	private JTable table;
 
@@ -73,12 +73,12 @@ public class BusinessContact extends JFrame {
 		bt_Refresh.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				bt_Updatade.setEnabled(false);
-				bt_Save.setEnabled(false);
-				bt_Delete.setEnabled(false);
-				bt_SaveNew.setEnabled(true);
-				bt_AddNew.setEnabled(true);
-				table.setModel(DbUtils.resultSetToTableModel(d.GetAllPersonal()));
+				table.setModel(DbUtils.resultSetToTableModel(d.GetAllBusiness()));
+				btn_Updatade.setEnabled(false);
+				btn_Save.setEnabled(false);
+				btn_Delete.setEnabled(false);
+				btn_SaveNew.setEnabled(true);
+				btn_AddNew.setEnabled(true);
 			}
 		});
 		bt_Refresh.setBounds(893, 130, 69, 17);
@@ -86,102 +86,102 @@ public class BusinessContact extends JFrame {
 		
 		tf_FirstName = new JTextField();
 		tf_FirstName.setColumns(10);
-		tf_FirstName.setBounds(58, 43, 56, 15);
+		tf_FirstName.setBounds(76, 43, 56, 15);
 		contentPane_1.add(tf_FirstName);
 		
 		tf_Email = new JTextField();
 		tf_Email.setColumns(10);
-		tf_Email.setBounds(177, 43, 56, 15);
+		tf_Email.setBounds(202, 43, 56, 15);
 		contentPane_1.add(tf_Email);
 		
 		tf_Addr1 = new JTextField();
 		tf_Addr1.setColumns(10);
-		tf_Addr1.setBounds(292, 43, 56, 15);
+		tf_Addr1.setBounds(325, 43, 56, 15);
 		contentPane_1.add(tf_Addr1);
 		
 		tf_City = new JTextField();
 		tf_City.setColumns(10);
-		tf_City.setBounds(402, 43, 56, 15);
+		tf_City.setBounds(450, 43, 56, 15);
 		contentPane_1.add(tf_City);
 		
 		tf_LastName = new JTextField();
 		tf_LastName.setColumns(10);
-		tf_LastName.setBounds(58, 94, 56, 15);
+		tf_LastName.setBounds(76, 94, 56, 15);
 		contentPane_1.add(tf_LastName);
 		
 		tf_Tel = new JTextField();
 		tf_Tel.setColumns(10);
-		tf_Tel.setBounds(177, 94, 56, 15);
+		tf_Tel.setBounds(202, 94, 56, 15);
 		contentPane_1.add(tf_Tel);
 		
 		tf_Addr2 = new JTextField();
 		tf_Addr2.setColumns(10);
-		tf_Addr2.setBounds(292, 94, 56, 15);
+		tf_Addr2.setBounds(325, 94, 56, 15);
 		contentPane_1.add(tf_Addr2);
 		
 		tf_Postcode = new JTextField();
 		tf_Postcode.setColumns(10);
-		tf_Postcode.setBounds(402, 94, 56, 15);
+		tf_Postcode.setBounds(450, 94, 56, 15);
 		contentPane_1.add(tf_Postcode);
 		
 		tf_BusinessTel = new JTextField();
 		tf_BusinessTel.setColumns(10);
-		tf_BusinessTel.setBounds(511, 43, 56, 15);
+		tf_BusinessTel.setBounds(599, 43, 56, 15);
 		contentPane_1.add(tf_BusinessTel);
 		
 		JLabel lblNewLabel = new JLabel("First Name");
-		lblNewLabel.setBounds(20, 46, 31, 9);
+		lblNewLabel.setBounds(20, 46, 62, 9);
 		contentPane_1.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Last Name");
-		lblNewLabel_1.setBounds(20, 100, 31, 9);
+		lblNewLabel_1.setBounds(20, 100, 49, 9);
 		contentPane_1.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Email");
-		lblNewLabel_2.setBounds(139, 46, 31, 9);
+		lblNewLabel_2.setBounds(139, 46, 56, 9);
 		contentPane_1.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Telephone");
-		lblNewLabel_3.setBounds(139, 97, 31, 9);
+		lblNewLabel_3.setBounds(139, 97, 56, 9);
 		contentPane_1.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Address 1");
-		lblNewLabel_4.setBounds(256, 49, 31, 9);
+		lblNewLabel_4.setBounds(265, 46, 62, 9);
 		contentPane_1.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Address 2");
-		lblNewLabel_5.setBounds(254, 97, 31, 9);
+		lblNewLabel_5.setBounds(265, 97, 64, 9);
 		contentPane_1.add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("City");
-		lblNewLabel_6.setBounds(368, 46, 31, 9);
+		lblNewLabel_6.setBounds(402, 46, 31, 9);
 		contentPane_1.add(lblNewLabel_6);
 		
 		JLabel lblNewLabel_7 = new JLabel("Postcode");
-		lblNewLabel_7.setBounds(364, 97, 31, 9);
+		lblNewLabel_7.setBounds(402, 97, 31, 9);
 		contentPane_1.add(lblNewLabel_7);
 		
 		JLabel lblNewLabel_8 = new JLabel("Business Telephone");
-		lblNewLabel_8.setBounds(473, 46, 31, 9);
+		lblNewLabel_8.setBounds(513, 46, 79, 9);
 		contentPane_1.add(lblNewLabel_8);
 		
-		JButton bt_AddNew = new JButton("Add New");
-		bt_AddNew.addMouseListener(new MouseAdapter() {
+		JButton btn_AddNew = new JButton("Add New");
+		btn_AddNew.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				updatemode = false;
-				bt_Updatade.setEnabled(false);
-				bt_Save.setEnabled(false);
-				bt_Delete.setEnabled(false);
-				bt_SaveNew.setEnabled(true);
-				bt_AddNew.setEnabled(true);
+				btn_AddNew.setEnabled(true);
+				btn_Updatade.setEnabled(false);
+				btn_Save.setEnabled(false);
+				btn_Delete.setEnabled(false);
+				btn_SaveNew.setEnabled(true);
 			}
 		});
-		bt_AddNew.setBounds(893, 42, 69, 17);
-		contentPane_1.add(bt_AddNew);
+		btn_AddNew.setBounds(893, 42, 69, 17);
+		contentPane_1.add(btn_AddNew);
 		
-		JButton bt_SaveNew = new JButton("Save New");
-		bt_SaveNew.addMouseListener(new MouseAdapter() {
+		JButton btn_SaveNew = new JButton("Save New");
+		btn_SaveNew.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(updatemode == true) {
@@ -212,25 +212,25 @@ public class BusinessContact extends JFrame {
 					}
 			}
 		});
-		bt_SaveNew.setBounds(893, 80, 69, 17);
-		contentPane_1.add(bt_SaveNew);
+		btn_SaveNew.setBounds(893, 80, 69, 17);
+		contentPane_1.add(btn_SaveNew);
 		
-		JButton bt_Update = new JButton("Update Selected");
-		bt_Update.addMouseListener(new MouseAdapter() {
+		JButton btn_Update = new JButton("Update Selected");
+		btn_Update.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				updatemode = true;
-				bt_SaveNew.setEnabled(false);
-				bt_AddNew.setEnabled(false);
-				bt_Delete.setEnabled(false);
-				bt_Save.setEnabled(true);
+				btn_SaveNew.setEnabled(false);
+				btn_AddNew.setEnabled(false);
+				btn_Delete.setEnabled(false);
+				btn_Save.setEnabled(true);
 			}
 		});
-		bt_Update.setBounds(790, 42, 69, 17);
-		contentPane_1.add(bt_Update);
+		btn_Update.setBounds(790, 42, 69, 17);
+		contentPane_1.add(btn_Update);
 		
-		JButton bt_Save = new JButton("Save Selected");
-		bt_Save.addMouseListener(new MouseAdapter() {
+		JButton btn_Save = new JButton("Save Selected");
+		btn_Save.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(updatemode = true) {
@@ -263,11 +263,11 @@ public class BusinessContact extends JFrame {
 					}
 			}
 		});
-		bt_Save.setBounds(790, 80, 69, 17);
-		contentPane_1.add(bt_Save);
+		btn_Save.setBounds(790, 80, 69, 17);
+		contentPane_1.add(btn_Save);
 		
-		JButton bt_Delete = new JButton("Delete Selected");
-		bt_Delete.addMouseListener(new MouseAdapter() {
+		JButton btn_Delete = new JButton("Delete Selected");
+		btn_Delete.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String id=table.getValueAt(table.getSelectedRow(), 0).toString();
@@ -275,8 +275,8 @@ public class BusinessContact extends JFrame {
 				table.setModel(DbUtils.resultSetToTableModel(d.GetAllBusiness()));
 			}
 		});
-		bt_Delete.setBounds(790, 115, 69, 17);
-		contentPane_1.add(bt_Delete);
+		btn_Delete.setBounds(790, 115, 69, 17);
+		contentPane_1.add(btn_Delete);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(28, 150, 831, 452);
@@ -286,11 +286,11 @@ public class BusinessContact extends JFrame {
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				bt_Update.setEnabled(true);
-				bt_Save.setEnabled(true);
-				bt_Delete.setEnabled(true);
-				bt_SaveNew.setEnabled(false);
-				bt_AddNew.setEnabled(false);
+				btn_Update.setEnabled(true);
+				btn_Save.setEnabled(true);
+				btn_Delete.setEnabled(true);
+				btn_SaveNew.setEnabled(false);
+				btn_AddNew.setEnabled(false);
 				tf_FirstName.setText(table.getValueAt(table.getSelectedRow(),1).toString());
 				tf_LastName.setText(table.getValueAt(table.getSelectedRow(),2).toString());
 				tf_Email.setText(table.getValueAt(table.getSelectedRow(),3).toString());
