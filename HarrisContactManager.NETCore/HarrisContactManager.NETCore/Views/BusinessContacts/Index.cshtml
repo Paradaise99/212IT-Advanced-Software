@@ -1,0 +1,83 @@
+﻿@model IEnumerable<HarrisContactManager.NETCore.Models.BusinessContact>
+
+@{
+    ViewData["Title"] = "Business Contacts";
+}
+
+    <h1>Business Contacts</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessFName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessLName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessTel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessAddr1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessAddr2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessPostcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessBusinessTel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessFName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessLName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessTel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessAddr1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessAddr2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessPostcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessBusinessTel)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
