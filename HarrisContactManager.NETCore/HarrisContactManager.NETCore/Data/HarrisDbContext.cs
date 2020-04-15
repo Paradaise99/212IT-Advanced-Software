@@ -11,7 +11,7 @@ namespace HarrisContactManager.NETCore.Data
 {
     public class HarrisDbContext : DbContext 
     {
-        public HarrisDbContext(DbContextOptions<HarrisDbContext> options) : base(options)
+        public HarrisDbContext(DbContextOptions<HarrisDbContext> options) : base(options) //this is the contxt that runns the both classes the personal and the business contats classes;
         {
         }
 

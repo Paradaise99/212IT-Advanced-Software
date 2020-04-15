@@ -10,7 +10,7 @@ using HarrisContactManager.NETCore.Models;
 
 namespace HarrisContactManager.NETCore.Controllers
 {
-    public class PersonalContactsController : Controller
+    public class PersonalContactsController : Controller //this sit the class controller from the personall contacts;
     {
         private readonly HarrisDbContext _context;
 

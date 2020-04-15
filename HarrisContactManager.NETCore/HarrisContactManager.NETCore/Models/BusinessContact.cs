@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace HarrisContactManager.NETCore.Models
 {
-    public class BusinessContact
+    public class BusinessContact //this is the class business contacts in the models that will store the data and gives it the possability to get and set the data inside the same 
     {
         public int ID { get; set; }
         public string BusinessFName { get; set; }
