@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ContactManager8299745CSharp
 {
-    public abstract class Contact
+    public abstract class Contact //this is the class that contais the data that is used by the both personal and business contacts;
     {
         public int ContactID { get; set; }
 

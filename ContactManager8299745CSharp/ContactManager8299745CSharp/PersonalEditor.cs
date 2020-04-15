@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ContactManager8299745CSharp
 {
-    public partial class PersonalEditor : Form
+    public partial class PersonalEditor : Form //this is the form from the perosnal that is the same from business just running diferent methods from the personnal check the comments from business;
     {
         DbCon dbCon = new DbCon(); 
         public PersonalEditor()

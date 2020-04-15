@@ -8,22 +8,22 @@ using System.Threading.Tasks;
 
 namespace ContactManager8299745CSharp
 {
-    public class DbCon
+    public class DbCon //this class is the class were we make the conection to the database;
     {
-        private string conString = "Server=db212it.cgqw6genwnm1.us-east-1.rds.amazonaws.com; User ID=admin; Password=Paradaise99?; Database=HarrisContactDb";
+        private string conString = "Server=db212it.cgqw6genwnm1.us-east-1.rds.amazonaws.com; User ID=admin; Password=Paradaise99?; Database=HarrisContactDb"; // this is the sql string that makes the connection to the database using name password and more;
 
-        public DataTable GetAllPersonal()
+        public DataTable GetAllPersonal() //this is the method that will run the query in sql that will get all the data from the personal table; 
         {
             using (var conn = new MySqlConnection(conString))
             {
-                conn.Open();
+                conn.Open(); //here it opens the connetction to the database;
                 DataTable personalContactDt = new DataTable();
                 List<PersonalContact> personalContacts = new List<PersonalContact>();
-                using (var cmd = new MySqlCommand("CALL selectAllPersonal()", conn))
+                using (var cmd = new MySqlCommand("CALL selectAllPersonal()", conn)) //here is were the query is run;
                 using (var reader = cmd.ExecuteReader())
                     while (reader.Read())
                     {
-                        personalContacts.Add(new PersonalContact
+                        personalContacts.Add(new PersonalContact //here the constroctor personalcontacts is getting all the collums from the database and telling what data type it is;
                         {
                             ContactID = reader.GetInt32(0),
                             ContactFName = reader.GetString(1),
@@ -48,7 +48,7 @@ namespace ContactManager8299745CSharp
                 personalContactDt.Columns.Add("ContactPostcode");
                 personalContactDt.Columns.Add("ContactHomeTel");
 
-                foreach (var item in personalContacts)
+                foreach (var item in personalContacts) //here the data that was collected in the database is showed in the table;
                 {
                     var row = personalContactDt.NewRow();
 
@@ -66,13 +66,13 @@ namespace ContactManager8299745CSharp
                     personalContactDt.Rows.Add(row);
 
                 }
-                return personalContactDt;
+                return personalContactDt; //because it is a method it needs to return something and here it is returning the data that is in the table;
 
             }
         }
 
 
-        public async void InsertPersonal(PersonalContact personalContact)
+        public async void InsertPersonal(PersonalContact personalContact) //this is a methot that will run a query that in insert personal contatct in to the data base;
         {
             using (var conn = new MySqlConnection(conString))
             {
@@ -90,16 +90,16 @@ namespace ContactManager8299745CSharp
                     cmd.Parameters.AddWithValue("p7", personalContact.ContactCity);
                     cmd.Parameters.AddWithValue("p8", personalContact.ContactPostcode);
                     cmd.Parameters.AddWithValue("p9", personalContact.ContactHomeTel);
-                    await cmd.ExecuteNonQueryAsync();
+                    await cmd.ExecuteNonQueryAsync(); //here is the code that makes the sql page exacute the query;
                 }
             }
         }
 
-        public async void UpdatePersonal(PersonalContact personalContact)
+        public async void UpdatePersonal(PersonalContact personalContact) //this is the method that updates the existing contacts and runs that query;
         {
             using (var conn = new MySqlConnection(conString))
             {
-                await conn.OpenAsync();
+                await conn.OpenAsync(); //this is the code used so wen the conection isnt completed in a serten time it will give a error 
                 using (var cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
@@ -114,12 +114,12 @@ namespace ContactManager8299745CSharp
                     cmd.Parameters.AddWithValue("p8", personalContact.ContactCity);
                     cmd.Parameters.AddWithValue("p9", personalContact.ContactPostcode);
                     cmd.Parameters.AddWithValue("p10", personalContact.ContactHomeTel);
-                    await cmd.ExecuteNonQueryAsync();
+                    await cmd.ExecuteNonQueryAsync(); //here is the code that makes the sql page exacute the query;
                 }
             }
         }
 
-        public async void DeletePersonal(int id)
+        public async void DeletePersonal(int id) //this is the method that deletes the intire data from a specifc contact;
         {
             using (var conn = new MySqlConnection(conString))
             {
@@ -134,7 +134,7 @@ namespace ContactManager8299745CSharp
             }
         }
 
-        public DataTable GetAllBusiness()
+        public DataTable GetAllBusiness() //this is the code that makes the samething but this time for business contacts; but all the rest is the same;
         {
             using (var conn = new MySqlConnection(conString))
             {

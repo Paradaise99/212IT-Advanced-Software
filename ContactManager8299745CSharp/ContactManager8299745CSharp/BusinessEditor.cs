@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ContactManager8299745CSharp
 {
-    public partial class BusinessEditor : Form
+    public partial class BusinessEditor : Form //this is the business form and all the action that happen on it;
     {
         DbCon dbCon = new DbCon();
         public BusinessEditor()
@@ -18,17 +18,17 @@ namespace ContactManager8299745CSharp
             InitializeComponent();
         }
 
-        private void BusinessEditor_Load(object sender, EventArgs e)
+        private void BusinessEditor_Load(object sender, EventArgs e) //this code says that when the business form open the data will apear on the table;
         {
             dgv_BusinessRecords.DataSource = dbCon.GetAllBusiness();
         }
 
-        private void btn_Refresh_Click(object sender, EventArgs e)
+        private void btn_Refresh_Click(object sender, EventArgs e) //this is the action of the button refresh that will refresh and get all the business data;
         {
-            dgv_BusinessRecords.DataSource = dbCon.GetAllBusiness();
+            dgv_BusinessRecords.DataSource = dbCon.GetAllBusiness(); //thats why it runs the getallbusines method from the dbconn;
         }
 
-        private void dgv_BusinessRecords_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv_BusinessRecords_CellClick(object sender, DataGridViewCellEventArgs e) //this is aaction when pressing the row in the table it will get all the data from the row and puts it on the text field
         {
             int index = Int32.Parse(dgv_BusinessRecords.SelectedCells[0].Value.ToString());
             tbx_FName.Text = dgv_BusinessRecords.SelectedCells[1].Value.ToString();
@@ -42,7 +42,7 @@ namespace ContactManager8299745CSharp
             tbx_BusinessTel.Text = dgv_BusinessRecords.SelectedCells[9].Value.ToString();
         }
 
-        private void btn_AddNew_Click(object sender, EventArgs e)
+        private void btn_AddNew_Click(object sender, EventArgs e) //the code that wuns when presssing the button add new button it will get the data fro the text fields and store it in to the class business and store it in the database;
         {
             tbx_FName.Enabled = true;
             tbx_LName.Enabled = true;
@@ -68,7 +68,7 @@ namespace ContactManager8299745CSharp
 
         }
 
-        private void btn_SaveNew_Click(object sender, EventArgs e)
+        private void btn_SaveNew_Click(object sender, EventArgs e) //this is the part that will save the data in the database by geting what is in the textfield and storing it on the database;
         {
             BusinessContact businessContact = new BusinessContact();
             businessContact.ContactFName = tbx_FName.Text;
@@ -96,7 +96,7 @@ namespace ContactManager8299745CSharp
 
         }
 
-        private void btn_Update_Click(object sender, EventArgs e)
+        private void btn_Update_Click(object sender, EventArgs e) //when updating this action will update the data that is already in the database and change it for the new data that is in the text fields;
         {
             tbx_FName.Enabled = true;
             tbx_LName.Enabled = true;
@@ -114,7 +114,7 @@ namespace ContactManager8299745CSharp
 
         }
 
-        private void btn_SaveSelected_Click(object sender, EventArgs e)
+        private void btn_SaveSelected_Click(object sender, EventArgs e) //this is the part that stores the data that is in the textfileds in the database;
         {
             int index = Int32.Parse(dgv_BusinessRecords.SelectedCells[0].Value.ToString());
             BusinessContact businessContact = new BusinessContact();
@@ -146,9 +146,9 @@ namespace ContactManager8299745CSharp
 
         }
 
-        private void btn_Delete_Click(object sender, EventArgs e)
+        private void btn_Delete_Click(object sender, EventArgs e) //this is the deleete action that will the delite the specific row;
         {
-            string message = "Do you really want to delete?";
+            string message = "Do you really want to delete?"; // it will ask if really want to delete;
             string caption = "Do you want to Delete  the contact with the record ID=" + Int32.Parse(dgv_BusinessRecords.SelectedCells[0].Value.ToString());
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
